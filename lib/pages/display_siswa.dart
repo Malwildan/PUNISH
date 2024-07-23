@@ -125,47 +125,44 @@ class _DisplaySiswaState extends State<DisplaySiswa> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Siswa List'),
+        title: Text('Daftar Siswa', style: TextStyle(fontWeight: FontWeight.w500),),
+        backgroundColor: Colors.red[900],
+        foregroundColor: Colors.white,
       ),
       floatingActionButton: GestureDetector(
         onLongPress: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AddSiswa(),
+              builder: (context) => ScanCodePage(),
             ),
           );
         },
         child: FloatingActionButton(
+          shape: CircleBorder(),
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ScanCodePage(),
+                builder: (context) => AddSiswa(),
               ),
             );
           },
-          child: const Icon(Icons.add_box),
+          child: const Icon(Icons.add_box, color: Colors.white,),
+          backgroundColor: Colors.red[900],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
+        color: Colors.red[900],
         shape: const CircularNotchedRectangle(),
         notchMargin: 5,
-        // child: Row(
-        //   mainAxisSize: MainAxisSize.max,
-        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //   children: <Widget>[
-        //     IconButton(
-        //       icon: Icon(Icons.menu),
-        //       onPressed: () {},
-        //     ),
-        //     IconButton(
-        //       icon: Icon(Icons.search),
-        //       onPressed: () {},
-        //     ),
-        //   ],
-        // ),
+        child: SizedBox(
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          ),
+        ),
       ),
       body: Column(
         children: [

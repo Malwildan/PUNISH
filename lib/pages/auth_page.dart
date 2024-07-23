@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
             
           ),
         );
-        Navigator.push(
+        Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => Dashboard(),
@@ -70,7 +70,7 @@ class LoginPage extends StatelessWidget {
             
           ),
         );
-        Navigator.push(
+        Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => LoginPage(),
@@ -113,7 +113,8 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterLogin(
-      title: 'whatever',
+      //title: 'PUNISH',
+      logo: const AssetImage('images/logoapk-hori-white.png'),
       onLogin: (data) => _authUser(data, context),
       onSignup: (data) => _signupUser(data, context),
       onSubmitAnimationCompleted: () {

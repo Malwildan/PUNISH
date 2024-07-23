@@ -64,14 +64,18 @@ class _addKotaState extends State<addKota> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('ADD KOTA'),),
+      appBar: AppBar(title: Text('Add Kota'),
+      foregroundColor: Colors.white,
+      backgroundColor: Colors.red[900],
+      ),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
             TextField(
               controller: _namaController,
-              decoration: InputDecoration(labelText: 'Nama'),
+              decoration: InputDecoration(labelText: 'Nama Kota', border: OutlineInputBorder()),
+              
             ),
             SizedBox(height: 20,),
             ElevatedButton(onPressed: _submitData, child: Text('Submit'))

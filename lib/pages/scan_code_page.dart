@@ -18,6 +18,8 @@ class _ScanCodePageState extends State<ScanCodePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Scan QR Code'),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.red[900],
         actions: [
           IconButton(
             onPressed: () {

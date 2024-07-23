@@ -27,16 +27,22 @@ class _JenisPelanggaranPageState extends State<JenisPelanggaranPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Jenis Pelanggaran'),
+        title: Text('Daftar Pelanggaran'),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.red[900],
       ),
       floatingActionButton: FloatingActionButton(
+        shape: CircleBorder(),
         onPressed: () {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => addPelanggaran(),));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => addPelanggaran(),));
         },
         child: const Icon(Icons.add),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.red[900],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
+        color: Colors.red[900],
         shape: const CircularNotchedRectangle(),
         notchMargin: 5,
       ),
@@ -57,12 +63,15 @@ class _JenisPelanggaranPageState extends State<JenisPelanggaranPage> {
             itemCount: jenisPelanggaran.length,
             itemBuilder: (context, index) {
               final pelanggaran = jenisPelanggaran[index];
-              return ListTile(
-                title: Text(pelanggaran['nama']),
-                trailing: Text('Poin: ${pelanggaran['poin']}'.toString(), style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
-                // onTap: () {
-                //   // Handle tap if necessary
-                // },
+              return Padding(
+                padding: EdgeInsets.only(top: 6),
+                child: ListTile(
+                  title: Text(pelanggaran['nama']),
+                  trailing: Text('Poin: ${pelanggaran['poin']}'.toString(), style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+                  // onTap: () {
+                  //   // Handle tap if necessary
+                  // },
+                ),
               );
             },
           );

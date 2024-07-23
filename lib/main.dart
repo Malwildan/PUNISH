@@ -9,7 +9,6 @@ import 'package:siswa_app/pages/display_siswa.dart';
 import 'package:siswa_app/pages/auth_page.dart';
 import 'package:siswa_app/pages/generate_qr.dart';
 import 'package:siswa_app/pages/scan_code_page.dart';
-import 'package:siswa_app/pages/splash_page.dart';
 import 'package:siswa_app/pages/add_kota.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

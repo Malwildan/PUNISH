@@ -41,6 +41,8 @@ class _SiswaPelanggaranPageState extends State<SiswaPelanggaranPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Pelanggaran ${widget.siswaNama}'),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.red[900],
       ),
       body: FutureBuilder<List<Map<String, dynamic>>>(
         future: fetchPelanggaranSiswa(widget.siswaId),
@@ -61,7 +63,7 @@ class _SiswaPelanggaranPageState extends State<SiswaPelanggaranPage> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 20, bottom: 20),
                   child: Text(
                     'Total Poin: $totalPoints',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

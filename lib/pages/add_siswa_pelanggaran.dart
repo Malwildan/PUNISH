@@ -37,6 +37,7 @@ class _AddSiswaPelanggaranPageState extends State<AddSiswaPelanggaranPage> {
     loadLastSelectedPelanggaran();
   }
 
+
   Future<void> fetchPelanggaran() async {
     try {
       final response = await Supabase.instance.client.from('pelanggaran').select();
@@ -95,8 +96,9 @@ class _AddSiswaPelanggaranPageState extends State<AddSiswaPelanggaranPage> {
           ),
         );
 
+        Navigator.pop(context, '/to_siswa');
         await printPelanggaran(siswaNama!, _selectedPelanggaran!);
-        Navigator.popAndPushNamed(context, '/to_siswa');
+        
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -115,13 +117,12 @@ class _AddSiswaPelanggaranPageState extends State<AddSiswaPelanggaranPage> {
       final pelanggaran = _pelanggaranList.firstWhere((element) => element['id'].toString() == pelanggaranId)['nama'];
       final today = DateTime.now();
       final formattedDate = '${today.day}-${today.month}-${today.year}';
-      bluetooth.printCustom("==== Pelanggaran Siswa ====", 0, 0);
+      bluetooth.printCustom("====== PUNISH ======", 1, 1);
       bluetooth.printCustom("Tanggal: $formattedDate", 0, 0);
       bluetooth.printCustom("NISN: $siswaNISN", 0, 0);
       bluetooth.printCustom("Nama: $namaSiswa", 0, 0);
       bluetooth.printCustom("Pelanggaran: $pelanggaran", 0, 0);
-      bluetooth.printCustom("Catatan: $_catatanController.text", 0, 0);
-      bluetooth.printNewLine();
+      bluetooth.printCustom("Catatan: ${_catatanController.text}", 0, 0);
       bluetooth.paperCut();
     } else {
       // Attempt to reconnect if the device is disconnected
@@ -167,12 +168,12 @@ class _AddSiswaPelanggaranPageState extends State<AddSiswaPelanggaranPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add Pelanggaran'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.bluetooth),
-            onPressed: _navigateToPairedDevices,
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: Icon(Icons.bluetooth),
+        //     onPressed: _navigateToPairedDevices,
+        //   ),
+        // ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -215,6 +216,7 @@ class _AddSiswaPelanggaranPageState extends State<AddSiswaPelanggaranPage> {
                   border: OutlineInputBorder(),
                 ),
               ),
+              SizedBox(height: 20,),
               ElevatedButton(onPressed: addPelanggaran, child: Text('Submit'))
             ],
           ),

@@ -67,19 +67,23 @@ class _addKotaState extends State<addPelanggaran> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Add Pelanggaran'),),
+      appBar: AppBar(title: Text('Add Pelanggaran'),
+      foregroundColor: Colors.white,
+      backgroundColor: Colors.red[900],
+      ),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
+            SizedBox(height: 10,),
             TextField(
               controller: _namaController,
-              decoration: InputDecoration(labelText: 'Nama'),
+              decoration: InputDecoration(labelText: 'Nama', border: OutlineInputBorder()),
             ),
             SizedBox(height: 20,),
             TextField(
               controller: _poinController,
-              decoration: InputDecoration(labelText: 'Poin'),
+              decoration: InputDecoration(labelText: 'Poin', border: OutlineInputBorder()),
             ),
             SizedBox(height: 20,),
             ElevatedButton(onPressed: _submitData, child: Text('Submit'))

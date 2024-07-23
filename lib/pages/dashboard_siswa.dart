@@ -56,16 +56,21 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Siswa Panel'),
+        title: Text('Dashboard'),
       ),
       drawer: Drawer(
         child: Column(
           children: [
+            SizedBox(height: 60,),
+            Image.asset('images/logoapk-hori.png'),
             Expanded(
               child: ListView(
                 children: [
                   ListTile(
-                    title: Text('Siswa'),
+                    title: Padding(
+                      padding: const EdgeInsets.only(left: 14),
+                      child: Text('Daftar Siswa'),
+                    ),
                     onTap: () {
                       Navigator.push(
                         context,
@@ -76,7 +81,10 @@ class _DashboardState extends State<Dashboard> {
                     },
                   ),
                   ListTile(
-                    title: Text('Kota'),
+                    title: Padding(
+                      padding: const EdgeInsets.only(left: 14),
+                      child: Text('Daftar Kota'),
+                    ),
                     onTap: () {
                       Navigator.push(
                         context,
@@ -87,7 +95,11 @@ class _DashboardState extends State<Dashboard> {
                     },
                   ),
                   ListTile(
-                    title: Text('Jenis Pelanggaran'),
+                    title: Padding(
+                      padding: const EdgeInsets.only(left: 14
+                      ),
+                      child: Text('Daftar Pelanggaran'),
+                    ),
                     onTap: () {
                       Navigator.push(
                         context,
@@ -103,29 +115,41 @@ class _DashboardState extends State<Dashboard> {
             ListTile(
               leading: Icon(Icons.bluetooth),
               title: Text('Paired Device'),
-              onTap: () =>  PairedDevicesPage(),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PairedDevicesPage(),
+                  ),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.logout_outlined),
               title: Text('Sign Out'),
               onTap: () => _signOut(context),
+              iconColor: Colors.red,
+              textColor: Colors.red,
+              selectedTileColor: Colors.grey[400],
             ),
           ],
         ),
       ),
       body: _pages[_selectedIndex],
       floatingActionButton: FloatingActionButton(
+        shape: CircleBorder(),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScanCodePage(),));
         },
-        child: const Icon(Icons.qr_code),
+        child: const Icon(Icons.qr_code, color: Colors.white,),
+        backgroundColor: Colors.red[900],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.pie_chart),
-              label: 'Siswa',
+              label: 'Stat Siswa',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.bar_chart),
@@ -133,7 +157,7 @@ class _DashboardState extends State<Dashboard> {
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.red,
+          selectedItemColor: Colors.red[900],
           onTap: _onItemTapped,
         ),
       );
@@ -291,7 +315,7 @@ class DashboardContent extends StatelessWidget {
         barRods: [
           BarChartRodData(
             toY: entry.value.value.toDouble(),
-            color: Colors.orange,
+            color: Colors.red[900],
           )
         ],
       );

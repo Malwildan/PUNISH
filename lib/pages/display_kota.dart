@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:siswa_app/main.dart';
+import 'package:siswa_app/pages/add_kota.dart';
 import 'package:siswa_app/pages/dashboard_siswa.dart';
-import 'package:siswa_app/pages/edit_kota.dart';
 import 'package:siswa_app/pages/edit_siswa.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -95,16 +95,21 @@ class _DisplayKotaState extends State<DisplayKota> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kota List'),
+        title: Text('Daftar Kota', style: TextStyle(fontWeight: FontWeight.w500),),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.red[900],
       ),
       floatingActionButton: FloatingActionButton(
+        shape: CircleBorder(),
+        backgroundColor: Colors.red[900],
         onPressed: () {
-          Navigator.of(context).pushNamed('/add_page');
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => addKota(),));
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, color: Colors.white,),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
+        color: Colors.red[900],
         shape: const CircularNotchedRectangle(),
         notchMargin: 5,
       ),
@@ -154,16 +159,6 @@ class _DisplayKotaState extends State<DisplayKota> {
                                     await deleteKota(kota['id']);
                                   },
                                   icon: Icon(Icons.delete),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                        builder: (context) => EditKota(id:(kota['id']),),
-                                      ),
-                                    );
-                                  },
-                                  icon: Icon(Icons.edit),
                                 ),
                               ],
                             ),
